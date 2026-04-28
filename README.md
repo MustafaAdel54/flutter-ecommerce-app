@@ -35,7 +35,11 @@ lib/
 
 ## 📱 App Previews
 
-*(Add screenshots or GIFs here)*
+<p align="center">
+  <img src="assets/gifs/1_commerce.gif" width="32%" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/gifs/2_commerce.gif" width="32%" />
+</p>
 
 ## 🤝 Contact
 
