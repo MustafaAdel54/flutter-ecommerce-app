@@ -38,11 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
             email: email.trim(),
             password: password.trim(),
           );
-      final user = await UsersRepo().createUser(
-        userCredential.user!.uid,
-        email,
-        username,
-      );
+      await UsersRepo().createUser(userCredential.user!.uid, email, username);
 
       emit(AuthSuccess("Account created successfully!"));
     } on FirebaseAuthException catch (e) {

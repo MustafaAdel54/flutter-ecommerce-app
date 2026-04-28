@@ -1,16 +1,45 @@
-# e_commerce
+# E-Commerce Flutter Application
 
-A new Flutter project.
+A fully functional E-Commerce application built with Flutter, designed to provide a seamless and fast shopping experience. This project showcases clean architecture, efficient state management, and modern mobile development practices.
 
-## Getting Started
+## 🚀 Key Features
 
-This project is a starting point for a Flutter application.
+- **Product Catalog**: Fetches and displays products dynamically using REST API.
+- **Authentication**: Secure user registration and login powered by Firebase Authentication.
+- **Cart Management**: Add, remove, and manage cart items with real-time UI updates using BLoC State Management.
+- **Interactive UI**: A modern, responsive design optimized for a smooth user experience.
+- **Data Persistence**: User data, favorites, and preferences managed via Firebase Firestore.
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠 Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Language**: Dart
+- **Framework**: Flutter
+- **State Management**: BLoC (Business Logic Component)
+- **Backend & Services**: Firebase (Auth, Firestore)
+- **Networking**: [Http]
+- **Navigation**: GoRouter
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🏗 Project Architecture
+
+The project follows a Feature-based Architecture to ensure clean separation of concerns and maintainability:
+
+```plaintext
+lib/
+├── core/             # Shared components (Theme, Routes, Network, Extensions)
+├── features/         # Individual features (Cart, Auth, Product, Profile)
+│   ├── cart/         # Cart logic, BLoC, and UI
+│   ├── auth/         # Authentication logic
+│   └── ...
+└── main.dart         # Application entry point
+```
+
+## 📱 App Previews
+
+*(Add screenshots or GIFs here)*
+
+## 🤝 Contact
+
+If you have any questions, suggestions, or would like to collaborate, feel free to reach out:
+
+- **LinkedIn**: [https://www.linkedin.com/in/mustafa-eissa](https://www.linkedin.com/in/mustafa-eissa)
+- **Email**: [mustafa.eissa5455@gmail.com](mailto:mustafa.eissa5455@gmail.com)
