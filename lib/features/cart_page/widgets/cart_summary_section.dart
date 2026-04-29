@@ -5,6 +5,7 @@ import 'package:e_commerce/features/market_page/cubit/market/market_cubit.dart';
 import 'package:e_commerce/shared/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_commerce/features/cart_page/widgets/order_success_dialog.dart';
 
 class CartSummarySection extends StatelessWidget {
   const CartSummarySection({super.key});
@@ -97,7 +98,14 @@ class CartSummarySection extends StatelessWidget {
                         child: PrimaryButton(
                           text: 'Checkout',
                           icon: Icons.navigate_next,
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              barrierColor: Colors.black54, // Semi-transparent overlay
+                              barrierDismissible: false,
+                              builder: (context) => const OrderSuccessDialog(),
+                            );
+                          },
                         ),
                       ),
                     ],

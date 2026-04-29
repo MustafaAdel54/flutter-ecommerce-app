@@ -97,6 +97,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         }
       }
     });
+    on<ClearCartEvent>((event, emit) async {
+      emit(CartLoaded(const {}));
+      try {
+        await _repository.clearCart();
+      } catch (e) {
+        add(LoadCartEvent());
+      }
+    });
 
     add(LoadCartEvent());
   }

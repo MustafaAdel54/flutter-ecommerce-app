@@ -53,4 +53,11 @@ class CartRepository {
       'items.$productId': FieldValue.increment(-1),
     });
   }
+
+  Future<void> clearCart() async {
+    final user = _auth.currentUser;
+    if (user == null) return;
+
+    await _firestore.collection('cart').doc(user.uid).delete();
+  }
 }
