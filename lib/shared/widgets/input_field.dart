@@ -6,6 +6,7 @@ class InputField extends StatefulWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   final Widget? suffixIcon;
   final Widget? icon;
 
@@ -16,6 +17,7 @@ class InputField extends StatefulWidget {
     this.controller,
     this.keyboardType,
     this.validator,
+    this.onChanged,
     this.suffixIcon,
     this.icon,
   });
@@ -40,6 +42,7 @@ class _InputFieldState extends State<InputField> {
       validator: widget.validator,
       obscureText: _obscureText,
       keyboardType: widget.keyboardType,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         icon: widget.icon,
         hintText: widget.hintText,

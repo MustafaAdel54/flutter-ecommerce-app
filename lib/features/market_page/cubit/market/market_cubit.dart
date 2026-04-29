@@ -9,6 +9,8 @@ part 'market_state.dart';
 class MarketCubit extends Cubit<MarketState> {
   MarketCubit() : super(MarketInitial());
 
+  List<ProductModel> allProducts = [];
+
   Future<void> fetchProducts() async {
     emit(MarketLoading());
     try {
@@ -19,12 +21,23 @@ class MarketCubit extends Cubit<MarketState> {
         final newList = list
             .map<ProductModel>((json) => ProductModel.fromMap(json))
             .toList();
-        final List<ProductModel> products = await newList;
+        allProducts = newList;
 
-        emit(MarketSuccess(products));
+        emit(MarketSuccess(allProducts));
       }
     } catch (e) {
       emit(MarketError("Failed to load products: ${e.toString()}"));
+    }
+  }
+
+  void searchProducts(String query) {
+    if (query.isEmpty) {
+      emit(MarketSuccess(allProducts));
+    } else {
+      final filteredProducts = allProducts.where((product) {
+        return product.title.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+      emit(MarketSuccess(filteredProducts));
     }
   }
 }

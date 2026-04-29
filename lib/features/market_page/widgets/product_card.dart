@@ -18,8 +18,6 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  bool isFavourite = false;
-
   @override
   Widget build(BuildContext context) {
     return Column(
