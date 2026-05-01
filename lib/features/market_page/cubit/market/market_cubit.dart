@@ -24,6 +24,8 @@ class MarketCubit extends Cubit<MarketState> {
         allProducts = newList;
 
         emit(MarketSuccess(allProducts));
+      } else {
+        emit(MarketError("Server error: ${response.statusCode}"));
       }
     } catch (e) {
       emit(MarketError("Failed to load products: ${e.toString()}"));

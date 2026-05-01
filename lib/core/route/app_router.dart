@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth_page/cubit/auth/auth_cubit.dart';
+
 import 'package:e_commerce/features/auth_page/login_screen.dart';
 import 'package:e_commerce/features/cart_page/cart_screen.dart';
 import 'package:e_commerce/features/forget_password_page/forget_password_screen.dart';
@@ -7,7 +7,7 @@ import 'package:e_commerce/features/product_details/product_details_screen.dart'
 import 'package:e_commerce/features/splash_page/splash_screen.dart';
 import 'package:e_commerce/shared/models/product_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -40,10 +40,7 @@ class AppRouter {
       GoRoute(path: auth, builder: (context, state) => AuthScreen()),
       GoRoute(
         path: forgotPassword,
-        builder: (context, state) => BlocProvider(
-          create: (context) => AuthCubit(),
-          child: const ForgotPasswordScreen(),
-        ),
+        builder: (context, state) => const ForgotPasswordScreen(),
       ),
       GoRoute(path: main, builder: (context, state) => MainScreen()),
       GoRoute(path: cart, builder: (context, state) => const CartScreen()),

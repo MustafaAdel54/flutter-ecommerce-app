@@ -53,7 +53,7 @@ class _InputFieldState extends State<InputField> {
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined,
                   size: 20,
-                  color: Colors.black54,
+                  color: Theme.of(context).iconTheme.color,
                 ),
                 onPressed: () {
                   setState(() {

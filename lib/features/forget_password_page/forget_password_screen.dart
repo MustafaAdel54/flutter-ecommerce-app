@@ -35,7 +35,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Mustafa Store',
+                'Indigo Vault',
                 style: context.textTheme.displayLarge?.copyWith(
                   color: AppColors.primary,
                   fontSize: 36,
@@ -51,7 +51,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Container(
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: Form(
@@ -122,7 +122,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                       const SizedBox(height: 24),
 
-                      // زر العودة
+                      // Back button
                       Center(
                         child: TextButton.icon(
                           onPressed: () => context.pop(),

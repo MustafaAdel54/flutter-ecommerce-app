@@ -19,18 +19,18 @@ class SecondaryButton extends StatelessWidget {
     return Expanded(
       child: OutlinedButton.icon(
         onPressed: onPressed,
-        icon: Icon(icon, color: iconColor),
+        icon: Icon(icon, color: iconColor ?? Theme.of(context).iconTheme.color),
         label: Text(
           label,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyLarge?.color,
             fontWeight: FontWeight.w500,
           ),
         ),
         style: OutlinedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 16),
-          backgroundColor: const Color(0xFFF5F5F5),
-          side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+          backgroundColor: Theme.of(context).cardColor,
+          side: BorderSide(color: Theme.of(context).dividerColor, width: 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),

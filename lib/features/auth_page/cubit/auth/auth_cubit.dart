@@ -38,6 +38,11 @@ class AuthCubit extends Cubit<AuthState> {
             email: email.trim(),
             password: password.trim(),
           );
+
+      // Update Firebase Profile displayName for easier access in UI
+      await userCredential.user!.updateDisplayName(username);
+      await userCredential.user!.reload();
+
       await UsersRepo().createUser(userCredential.user!.uid, email, username);
 
       emit(AuthSuccess("Account created successfully!"));

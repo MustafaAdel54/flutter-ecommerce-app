@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 const SizedBox(height: 24),
 
                 Text(
-                  'Mustafa Store',
+                  'Indigo Vault',
 
                   style: context.textTheme.displayLarge?.copyWith(
                     color: AppColors.primary,

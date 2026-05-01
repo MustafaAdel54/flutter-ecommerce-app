@@ -20,9 +20,9 @@ class ProductModel extends Equatable {
     return ProductModel(
       id: map['id'],
       title: map['title'] ?? '',
-      price: (map['price'] as num).toDouble(),
+      price: (map['price'] is num) ? (map['price'] as num).toDouble() : 0.0,
       description: map['description'] ?? '',
-      image: imagesList.first.toString(),
+      image: imagesList.isNotEmpty ? imagesList.first.toString() : '',
     );
   }
 

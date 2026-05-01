@@ -6,7 +6,9 @@ import 'package:e_commerce/features/auth_page/cubit/auth/auth_cubit.dart';
 import 'package:e_commerce/features/profile_page/widgets/box_state.dart';
 import 'package:e_commerce/features/profile_page/widgets/profile_photo.dart';
 import 'package:e_commerce/features/profile_page/widgets/setting_tile.dart';
+import 'package:e_commerce/shared/widgets/confirmation_dialog.dart';
 import 'package:e_commerce/shared/widgets/my_app_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        print('all build again');
+        final user = FirebaseAuth.instance.currentUser;
         return Scaffold(
           appBar: MyAppBar(),
           backgroundColor: AppColors.background,
@@ -42,10 +44,13 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       ProfilePhoto(),
                       SizedBox(height: 10),
-                      Text('Mustafa', style: context.textTheme.displayLarge),
+                      Text(
+                        user?.displayName ?? 'User',
+                        style: context.textTheme.displayLarge,
+                      ),
                       SizedBox(height: 3),
                       Text(
-                        'test@gmail.com',
+                        user?.email ?? '',
                         style: context.textTheme.bodyLarge,
                       ),
                       SizedBox(height: 24),
@@ -103,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(24),
                               boxShadow: [
                                 BoxShadow(
@@ -145,31 +150,15 @@ class ProfileScreen extends StatelessWidget {
                                   onTap: () {
                                     showDialog(
                                       context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: const Text('Logout'),
-                                        content: const Text(
-                                          'Are you sure you want to sign out?',
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            child: const Text('Cancel'),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              context
-                                                  .read<AuthCubit>()
-                                                  .logout();
-                                            },
-                                            child: const Text(
-                                              'Logout',
-                                              style: TextStyle(
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      builder: (context) => ConfirmationDialog(
+                                        title: 'Logout',
+                                        content:
+                                            'Are you sure you want to sign out?',
+                                        confirmText: 'Logout',
+                                        cancelText: 'Cancel',
+                                        onConfirm: () {
+                                          context.read<AuthCubit>().logout();
+                                        },
                                       ),
                                     );
                                   },
@@ -185,7 +174,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               if (state is AuthLoading)
                 Container(
-                  color: Colors.white.withValues(alpha: 0.5),
+                  color: Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.5),
                   child: const Center(child: CircularProgressIndicator()),
                 ),
             ],

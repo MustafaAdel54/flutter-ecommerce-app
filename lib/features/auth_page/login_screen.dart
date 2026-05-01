@@ -34,12 +34,8 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AuthToggleCubit()),
-        BlocProvider(create: (context) => AuthCubit()),
-      ],
-
+    return BlocProvider(
+      create: (context) => AuthToggleCubit(),
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthError) {
@@ -65,7 +61,7 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Container(
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(40),
                   boxShadow: [
                     BoxShadow(
@@ -120,10 +116,10 @@ class _AuthScreenState extends State<AuthScreen> {
                                   padding: const EdgeInsets.only(bottom: 8),
                                   child: Text(
                                     'UserName',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black54,
+                                      color: context.textTheme.bodySmall?.color,
                                     ),
                                   ),
                                 ),
@@ -143,10 +139,10 @@ class _AuthScreenState extends State<AuthScreen> {
                                 padding: const EdgeInsets.only(bottom: 8),
                                 child: Text(
                                   'Email Address',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black54,
+                                    color: context.textTheme.bodySmall?.color,
                                   ),
                                 ),
                               ),
@@ -173,10 +169,10 @@ class _AuthScreenState extends State<AuthScreen> {
                                     height: 33,
                                     child: Text(
                                       'PASSWORD',
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black54,
+                                        color: context.textTheme.bodySmall?.color,
                                       ),
                                     ),
                                   ),

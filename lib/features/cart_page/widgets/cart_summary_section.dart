@@ -6,6 +6,7 @@ import 'package:e_commerce/shared/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/features/cart_page/widgets/order_success_dialog.dart';
+import 'package:e_commerce/shared/widgets/confirmation_dialog.dart';
 
 class CartSummarySection extends StatelessWidget {
   const CartSummarySection({super.key});
@@ -35,9 +36,9 @@ class CartSummarySection extends StatelessWidget {
 
             return Container(
               padding: const EdgeInsets.all(24),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                border: Border(top: BorderSide(color: Colors.black12)),
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                border: const Border(top: BorderSide(color: Colors.black12)),
               ),
               child: Column(
                 children: [
@@ -98,14 +99,27 @@ class CartSummarySection extends StatelessWidget {
                         child: PrimaryButton(
                           text: 'Checkout',
                           icon: Icons.navigate_next,
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              barrierColor: Colors.black54, // Semi-transparent overlay
-                              barrierDismissible: false,
-                              builder: (context) => const OrderSuccessDialog(),
-                            );
-                          },
+                          onPressed: subtotal == 0
+                              ? null
+                              : () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => ConfirmationDialog(
+                                      title: 'Checkout Confirmation',
+                                      content:
+                                          'Are you sure you want to continue with your purchase?',
+                                      onConfirm: () {
+                                        showDialog(
+                                          context: context,
+                                          barrierColor: Colors.black54,
+                                          barrierDismissible: false,
+                                          builder: (context) =>
+                                              const OrderSuccessDialog(),
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
                         ),
                       ),
                     ],

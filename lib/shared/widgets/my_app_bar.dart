@@ -13,7 +13,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.colorScheme.surface,
       elevation: 0,
       leading: icon ?? Icon(Icons.menu, color: AppColors.primary),
       title: Text(

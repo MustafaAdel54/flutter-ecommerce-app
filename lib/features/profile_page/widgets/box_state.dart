@@ -19,7 +19,7 @@ class BoxState extends StatelessWidget {
       child: Container(
         height: 95,
         decoration: BoxDecoration(
-          color: AppColors.box,
+          color: AppColors.surface,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
